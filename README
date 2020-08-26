@@ -6,7 +6,7 @@ snapshot.c是blsnapshot.c模块的用户空间控制程序，用法是:
 snapshot /dev/vdb /mnt/b/cow 30
 
 "/dev/vdb" 表示对该磁盘做快照
-"/mnt/b/cow" 文件用于存储被覆盖的原始旧数据，必须位于 "/dev/vdb" 所挂在的分区
+"/mnt/b/cow" 文件用于存储被覆盖的原始旧数据
 "30" 表示预分配30兆磁盘空间给 "/mnt/b/cow" 文件
 
 实现逻辑是通过替换原块设备的make_request_fn函数拦截写入的bio，
