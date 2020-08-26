@@ -9,6 +9,6 @@ snapshot /dev/vdb /mnt/b/cow 30
 "/mnt/b/cow" 文件用于存储被新的写入覆盖的旧数据，必须位于 "/dev/vdb" 所挂在的分区，
 "30" 表示预分配30兆磁盘空间给 "/mnt/b/cow" 文件
 
-实现逻辑是通过替换原块设备的make_request_fn函数拦截写入的bio，根据此bio创建读取的bio，
-先把即将被覆盖的数据读取出来并写入到cow文件，再执行原来要写入的bio。
+实现逻辑是通过替换原块设备的make_request_fn函数拦截写入的bio，
+根据此bio把将被覆盖的数据读取出来并写入到cow文件，再执执行此bio。
 
