@@ -106,6 +106,7 @@ static void get_setup_params(const struct setup_params __user *in, char **bdev_p
 static void path_get_absolute_pathname(const struct path *path, char **buf, int *len_res) {
 	int  len;
 	char *pathname, *page_buf, *final_buf = NULL;
+
 	page_buf = (char *)__get_free_page(GFP_KERNEL);
 	pathname = d_path(path, page_buf, PAGE_SIZE);
 	len = page_buf + PAGE_SIZE - pathname;
